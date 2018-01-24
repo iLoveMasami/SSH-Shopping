@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -7,13 +8,70 @@
 <title>会员注册</title>
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+	function checkForm(){
+		//校验用户名：
+		//获得用户名文本框的值
+		var username = document.getElementById("username").value;
+		if(username == null ||username ==''){
+			alert("用户名不能为空！");
+			return false;//表单就不提交了
+		}
+		//校验密码：
+		//获得密码文本框的值
+		var password = document.getElementById("password").value;
+		if(password == null ||password ==''){
+			alert("密码不能为空！");
+			return false;//表单就不提交了
+		}
+		//校验确认密码：
+		var rePassword = document.getElementById("rePassword").value;
+		if(rePassword != password){
+			alert("两次密码输入不一致！");
+			return false;//表单就不提交了
+		}
+	}
+	function checkUsername(){
+		//获得文本框的值
+		var username = document.getElementById("username").value;
+		//1.创建异步交互对象
+		var xhr = createXMLHttp();
+		//2.设置监听，触发回调函数
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					document.getElementById("isExistUsername").innerHTML = xhr.responseText;
+				}
+			}
+		}
+		//3.打开连接   请求方式，请求路径，true(异步)
+		var url = "${pageContext.request.contextPath}/user_findByUsername.action?time="+new Date().getTime()+"&username="+username;
+		xhr.open("GET",url,true);
+		//4.发送
+		xhr.send(null);
+	}
+	function createXMLHttp()
+	{
+		var xmlHttp;
+		if(window.XMLHttpRequest){
+			xmlHttp=new XMLHttpRequest();
+		}
+		if(window.ActiveXObject){
+			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+			if(!xmlHttp){
+				xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+			}
+		}
+		return xmlHttp;
+	}
+</script>
 </head>
 <body>
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
 			<a href="http://localhost:8080/mango/">
-				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="传智播客">
+				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="东南大学">
 			</a>
 		</div>
 	</div>
@@ -30,15 +88,19 @@
 				<div class="main clearfix">
 					<div class="title">
 						<strong>会员注册</strong>USER REGISTER
+						
 					</div>
-					<form id="registerForm"  method="post" novalidate="novalidate">
+					<!-- onsubmit form表单提交时执行Javascript代码 -->
+					<form id="registerForm" action="${pageContext.request.contextPath}/user_regist.action" method="post" novalidate="novalidate" onsubmit="return checkForm();">
 						<table>
 							<tbody><tr>
 								<th>
 									<span class="requiredField">*</span>用户名:
 								</th>
 								<td>
-									<input type="text" id="username" name="username" class="text" maxlength="20">
+									<input type="text" id="username" name="username" class="text" maxlength="20" onblur="checkUsername()">
+									<span id="isExistUsername"></span>
+									
 								</td>
 							</tr>
 							<tr>
@@ -47,6 +109,7 @@
 								</th>
 								<td>
 									<input type="password" id="password" name="password" class="text" maxlength="20" autocomplete="off">
+									<span><s:fielderror fieldName="password"/></span>
 								</td>
 							</tr>
 							<tr>
@@ -54,7 +117,8 @@
 									<span class="requiredField">*</span>确认密码:
 								</th>
 								<td>
-									<input type="password" name="rePassword" class="text" maxlength="20" autocomplete="off">
+									<input type="password" id="rePassword" name="rePassword" class="text" maxlength="20" autocomplete="off">
+									
 								</td>
 							</tr>
 							<tr>
@@ -63,14 +127,16 @@
 								</th>
 								<td>
 									<input type="text" id="email" name="email" class="text" maxlength="200">
+									<span><s:fielderror fieldName="email"/></span>
 								</td>
 							</tr>
 									<tr>
 										<th>
-											真实姓名:
+											<span class="requiredField">*</span>真实姓名:
 										</th>
 										<td>
 												<input type="text" name="name" class="text" maxlength="200">
+												<span><s:fielderror fieldName="name"/></span>
 										</td>
 									</tr>
 									<tr>
@@ -205,4 +271,8 @@
 		<div class="copyright">Copyright © 2005-2018 网上商城 版权所有</div>
 	</div>
 </div>
-<div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 190px; height: 191px;" src="./会员注册 - Powered By Mango Team_files/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe></div></body></html>
+<div id="_my97DP" style="position: absolute; top: -1970px; left: -1970px;"><iframe style="width: 190px; height: 191px;" src="./会员注册 - Powered By Mango Team_files/My97DatePicker.htm" frameborder="0" border="0" scrolling="no"></iframe>
+</div>
+
+</body>
+</html>

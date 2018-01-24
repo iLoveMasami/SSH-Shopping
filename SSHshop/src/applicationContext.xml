@@ -36,22 +36,32 @@
 			<prop key="hibernate.connection.autocommit">false</prop>
 		</props>
 	</property>
+					<!-- 加载Hibernate中的映射文件 -->
+	<property name="mappingResources">
+		<list>
+			<value>iLoveMasami/shop/user/entity/User.hbm.xml</value>
+		</list>
+	</property>
 </bean>
 
-				<!-- 加载Hibernate中的映射文件 -->
 
 				<!-- 配置Action的类 -->
 <bean id="indexAction" class="iLoveMasami.shop.index.action.IndexAction" scope="prototype">
 </bean>
 <bean id="userAction" class="iLoveMasami.shop.user.action.UserAction" scope="prototype">
+	<property name="userService" ref="userService"></property>
 </bean>
 
 				<!-- 配置业务层的类 -->
-
+<bean id="userService" class="iLoveMasami.shop.user.service.UserService">
+	<property name="userDao" ref="userDao"></property>
+</bean>
 
 
 				<!-- 配置DAO的类 -->
-
+<bean id="userDao" class="iLoveMasami.shop.user.dao.UserDao">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+</bean>
 				<!-- 创建模板对象 -->
 
 				<!-- 配置事务管理器 -->

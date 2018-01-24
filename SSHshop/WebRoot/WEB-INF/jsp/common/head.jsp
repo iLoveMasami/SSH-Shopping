@@ -4,7 +4,7 @@
 		<div class="topNav clearfix">
 			<ul>
 				<li id="headerLogin" class="headerLogin" style="display: list-item;">
-					<a href="./会员登录.htm">登录</a>|
+					<a href="${pageContext.request.contextPath}/user_loginPage.action">登录</a>|
 				</li>
 				<li id="headerRegister" class="headerRegister" style="display: list-item;">
 					<a href="${pageContext.request.contextPath}/user_registPage.action">注册</a>|
