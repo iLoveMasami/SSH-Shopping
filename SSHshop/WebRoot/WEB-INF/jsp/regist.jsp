@@ -9,6 +9,9 @@
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/css/register.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
+	/**
+	*验证输入的用户名和密码的有效性
+	*/
 	function checkForm(){
 		//校验用户名：
 		//获得用户名文本框的值
@@ -31,6 +34,9 @@
 			return false;//表单就不提交了
 		}
 	}
+	/**
+	*AJAX验证用户名是否已被使用
+	*/
 	function checkUsername(){
 		//获得文本框的值
 		var username = document.getElementById("username").value;
@@ -50,6 +56,9 @@
 		//4.发送
 		xhr.send(null);
 	}
+	/**
+	生成XHR对象
+	*/
 	function createXMLHttp()
 	{
 		var xmlHttp;
@@ -64,6 +73,35 @@
 		}
 		return xmlHttp;
 	}
+	/**
+	切换验证码
+	*/
+	function changeImg(){
+		var img = document.getElementById("checkcodeImg");
+		//通过加时间戳来清除掉缓存
+		img.src = "${pageContext.request.contextPath}/checkImg.action?"+new Date().getTime();
+	}
+	/**AJAX验证码校验
+	*/
+	function checkCode(){
+		//获得文本框的值
+		var checkcode = document.getElementById("checkcode").value;
+		//1.创建异步交互对象
+		var xhr = createXMLHttp();
+		//2.设置监听，触发回调函数
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					document.getElementById("isCheckcodeCorrect").innerHTML = xhr.responseText;
+				}
+			}
+		}
+		//3.打开连接   请求方式，请求路径，true(异步)
+		var url = "${pageContext.request.contextPath}/user_checkAuthcode.action?time="+new Date().getTime()+"&checkcode="+checkcode;
+		xhr.open("GET",url,true);
+		//4.发送
+		xhr.send(null);
+	}
 </script>
 </head>
 <body>
@@ -75,7 +113,7 @@
 			</a>
 		</div>
 	</div>
-	<div class="span9">
+<div class="span9">
 <div class="headerAd">
 					<img src="${pageContext.request.contextPath}/resources/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障">
 </div>	
@@ -162,8 +200,10 @@
 									</th>
 									<td>
 										<span class="fieldSet">
-											<input type="text" id="captcha" name="captcha" class="text captcha" maxlength="4" autocomplete="off"><img id="captchaImage" class="captchaImage" src="${pageContext.request.contextPath}/resources/image/captcha.jhtml" title="点击更换验证码">
-										</span>
+											<input type="text" id="checkcode" name="checkcode" class="text captcha" maxlength="4" autocomplete="off" onblur="checkCode()">
+											<img id="checkcodeImg" class="captchaImage" src="${pageContext.request.contextPath}/checkImg.action" onclick="changeImg()" title="点击更换验证码">
+											</span>
+										<span id="isCheckcodeCorrect"></span>
 									</td>
 								</tr>
 							<tr>
