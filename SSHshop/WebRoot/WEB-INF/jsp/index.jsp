@@ -53,36 +53,11 @@
 			<img src="${pageContext.request.contextPath}/resources/image/a.jpg" width="260" height="343" alt="热门商品" title="热门商品">
 </div> -->
 						<ul class="tabContent" style="display: block;">
+								<s:iterator var="p" value="hList">
 									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/b.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
+										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
 									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/c.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/51afeef5-f6cb-4936-abea-315cfca0edc0-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/d.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/e.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/f.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/g.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/h.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/i.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/i.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/i.jpg" style="display: block;"></a>
-									</li>
+								</s:iterator>									
 						</ul>
 						<ul class="tabContent" style="display: none;">
 									<li>

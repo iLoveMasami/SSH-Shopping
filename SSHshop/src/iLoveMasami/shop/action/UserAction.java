@@ -1,4 +1,4 @@
-package iLoveMasami.shop.user.action;
+package iLoveMasami.shop.action;
 
 import java.io.IOException;
 
@@ -9,8 +9,8 @@ import org.apache.struts2.ServletActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import iLoveMasami.shop.user.entity.User;
-import iLoveMasami.shop.user.service.UserService;
+import iLoveMasami.shop.entity.User;
+import iLoveMasami.shop.service.UserService;
 /**
  * 用户模块Action类
  * @author iLoveMasami

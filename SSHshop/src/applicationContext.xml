@@ -39,7 +39,9 @@
 					<!-- 加载Hibernate中的映射文件 -->
 	<property name="mappingResources">
 		<list>
-			<value>iLoveMasami/shop/user/entity/User.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/User.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/Category.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/Product.hbm.xml</value>
 		</list>
 	</property>
 </bean>
@@ -47,23 +49,35 @@
 
 				<!-- 配置Action的类 -->
 <bean id="indexAction" class="iLoveMasami.shop.index.action.IndexAction" scope="prototype">
+	<property name="categoryService" ref="categoryService"></property>
+	<property name="productService" ref="productService"></property>
 </bean>
-<bean id="userAction" class="iLoveMasami.shop.user.action.UserAction" scope="prototype">
+<bean id="userAction" class="iLoveMasami.shop.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
 </bean>
-<bean id="checkImgAction" class="iLoveMasami.shop.user.action.CheckImgAction" scope="prototype">
+<bean id="checkImgAction" class="iLoveMasami.shop.action.CheckImgAction" scope="prototype">
 </bean>
 				<!-- 配置业务层的类 -->
-<bean id="userService" class="iLoveMasami.shop.user.service.UserService">
-	<property name="userDao" ref="userDao"></property>
+<bean id="userService" class="iLoveMasami.shop.service.UserService">
+	<property name="userDao" ref="userDao"/>
 </bean>
-
-
+<bean id="categoryService" class="iLoveMasami.shop.service.CategoryService">
+	<property name="categoryDao" ref="categoryDao"/>
+</bean>
+<bean id="productService" class="iLoveMasami.shop.service.ProductService">
+	<property name="productDao" ref="productDao"/>
+</bean>
 				<!-- 配置DAO的类 -->
-<bean id="userDao" class="iLoveMasami.shop.user.dao.UserDao">
-	<property name="sessionFactory" ref="sessionFactory"></property>
+<bean id="userDao" class="iLoveMasami.shop.dao.UserDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
-				<!-- 创建模板对象 -->
+<bean id="categoryDao" class="iLoveMasami.shop.dao.CategoryDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+<bean id="productDao" class="iLoveMasami.shop.dao.ProductDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+				
 
 				<!-- 配置事务管理器 -->
 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
