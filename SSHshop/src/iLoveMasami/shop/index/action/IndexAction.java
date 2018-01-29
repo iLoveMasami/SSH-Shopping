@@ -39,10 +39,14 @@ public class IndexAction extends ActionSupport {
 		//查询热门商品
 		List<Product> hlist = productService.findHot();
 		//将热门商品保存到值栈中
-//		for(Product p : hlist){
-//			System.out.println(p);
-//		}
 		ActionContext.getContext().getValueStack().set("hList", hlist);
+		
+		/*
+		 * 查询最新商品 
+		 */
+		List<Product> nlist = productService.findNew();
+		ActionContext.getContext().getValueStack().set("nList", nlist);
 		return "index";
 	}
+	
 }

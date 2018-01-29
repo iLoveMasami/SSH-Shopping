@@ -17,7 +17,7 @@
 	<div class="span5">
 		<div class="logo">
 			<a href="./网上商城/index.htm">
-				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="传智播客"/>
+				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="东南大学"/>
 			</a>
 		</div>
 	</div>
@@ -55,7 +55,7 @@
 						<ul class="tabContent" style="display: block;">
 								<s:iterator var="p" value="hList">
 									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
+										<a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/resources/image/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
 									</li>
 								</s:iterator>									
 						</ul>
@@ -135,30 +135,11 @@
 						</div>
 						 -->						
 						 <ul class="tabContent" style="display: block;">
+						 <s:iterator var="p" value="nList">
 									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/l.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/m.jpg" style="display: block;"></a>									</li>
-									
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/n.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/o.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/p.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a target="_blank"><img src="${pageContext.request.contextPath}/resources/image/m.jpg" style="display: block;"></a>									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/15.jpg" style="display: block;"></a>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/l.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
+										<a href="${pageContext.request.contextPath}/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/resources/image/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									
 									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/l.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="${pageContext.request.contextPath}/resources/image/l.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b499fb5e-999f-431b-a375-172ee09e4a3e-thumbnail.jpg" style="display: block;" /></a>
-									</li>
+						</s:iterator>			
 						</ul>
 						<ul class="tabContent" style="display: none;">
 									<li>

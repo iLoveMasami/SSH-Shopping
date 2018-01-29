@@ -42,6 +42,7 @@
 			<value>iLoveMasami/shop/entity/User.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/Category.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/Product.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/CategorySecond.hbm.xml</value>
 		</list>
 	</property>
 </bean>
@@ -55,8 +56,17 @@
 <bean id="userAction" class="iLoveMasami.shop.action.UserAction" scope="prototype">
 	<property name="userService" ref="userService"></property>
 </bean>
+				<!-- 验证码 -->
 <bean id="checkImgAction" class="iLoveMasami.shop.action.CheckImgAction" scope="prototype">
 </bean>
+				<!-- 商品模块 -->
+<bean id="productAction" class="iLoveMasami.shop.action.ProductAction" scope="prototype">
+	<property name="productService" ref="productService"></property>
+	<property name="categoryService" ref="categoryService"></property>
+</bean>
+
+
+
 				<!-- 配置业务层的类 -->
 <bean id="userService" class="iLoveMasami.shop.service.UserService">
 	<property name="userDao" ref="userDao"/>
@@ -67,6 +77,10 @@
 <bean id="productService" class="iLoveMasami.shop.service.ProductService">
 	<property name="productDao" ref="productDao"/>
 </bean>
+
+
+
+
 				<!-- 配置DAO的类 -->
 <bean id="userDao" class="iLoveMasami.shop.dao.UserDao">
 	<property name="sessionFactory" ref="sessionFactory"/>
