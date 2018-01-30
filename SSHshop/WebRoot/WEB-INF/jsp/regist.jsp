@@ -108,7 +108,7 @@
 <div class="container header">
 	<div class="span5">
 		<div class="logo">
-			<a href="http://localhost:8080/mango/">
+			<a href="http://www.seu.edu.cn/" target="_blank">
 				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="东南大学">
 			</a>
 		</div>
