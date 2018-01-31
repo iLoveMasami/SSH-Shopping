@@ -30,5 +30,14 @@
 			<result name="findByCid">/WEB-INF/jsp/productList.jsp</result>
 			<result name="findByCsid">/WEB-INF/jsp/productList.jsp</result>
 		</action>
+		<!-- 购物车 -->
+		<action name="cart_*" class="cartAction" method="{1}">
+			<result name="addCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="showCart">/WEB-INF/jsp/cart.jsp</result>
+			<result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
+			
+			
+		</action>
 	</package>
 </struts>

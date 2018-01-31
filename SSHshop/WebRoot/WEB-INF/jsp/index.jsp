@@ -14,13 +14,7 @@
 <body>
 
 <div class="container header">
-	<div class="span5">
-		<div class="logo">
-			<a href="http://www.seu.edu.cn/" target="_blank">
-				<img src="${pageContext.request.contextPath}/resources/image/r___________renleipic_01/logo.gif" alt="东南大学"/>
-			</a>
-		</div>
-	</div>
+	<%@ include file="common/logo.jsp" %>	
 	<div class="span9">
 <div class="headerAd">
 	<img src="${pageContext.request.contextPath}/resources/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障"/>

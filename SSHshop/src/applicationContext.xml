@@ -64,7 +64,10 @@
 	<property name="productService" ref="productService"></property>
 	<property name="categoryService" ref="categoryService"></property>
 </bean>
-
+			<!-- 购物车 -->
+<bean id="cartAction" class="iLoveMasami.shop.action.CartAction">
+	<property name="productService" ref="productService"></property>
+</bean>
 
 
 				<!-- 配置业务层的类 -->
