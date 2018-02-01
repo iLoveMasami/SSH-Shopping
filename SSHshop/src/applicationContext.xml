@@ -43,6 +43,8 @@
 			<value>iLoveMasami/shop/entity/Category.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/Product.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/CategorySecond.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/Order.hbm.xml</value>
+			<value>iLoveMasami/shop/entity/OrderItem.hbm.xml</value>
 		</list>
 	</property>
 </bean>
@@ -65,10 +67,13 @@
 	<property name="categoryService" ref="categoryService"></property>
 </bean>
 			<!-- 购物车 -->
-<bean id="cartAction" class="iLoveMasami.shop.action.CartAction">
+<bean id="cartAction" class="iLoveMasami.shop.action.CartAction" scope="prototype">
 	<property name="productService" ref="productService"></property>
 </bean>
-
+			<!--订单  -->
+<bean id="orderAction" class="iLoveMasami.shop.action.OrderAction" scope="prototype">
+	<property name="orderService" ref="orderService"/>
+</bean>
 
 				<!-- 配置业务层的类 -->
 <bean id="userService" class="iLoveMasami.shop.service.UserService">
@@ -80,7 +85,9 @@
 <bean id="productService" class="iLoveMasami.shop.service.ProductService">
 	<property name="productDao" ref="productDao"/>
 </bean>
-
+<bean id="orderService" class="iLoveMasami.shop.service.OrderService">
+	<property name="orderDao" ref="orderDao"/>
+</bean>
 
 
 
@@ -92,6 +99,9 @@
 	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
 <bean id="productDao" class="iLoveMasami.shop.dao.ProductDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>
+<bean id="orderDao" class="iLoveMasami.shop.dao.OrderDao">
 	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
 				
