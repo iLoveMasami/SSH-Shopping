@@ -5,8 +5,10 @@
 
 <struts>
 	<package name="shop" extends="struts-default" namespace="/">
+	<!-- 全局 -->
 		<global-results>
 			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
 		</global-results>
 		<!-- 首页 -->
 		<action name="index" class="indexAction">
@@ -16,8 +18,7 @@
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="registPage">/WEB-INF/jsp/regist.jsp</result>
 			<result name="input">/WEB-INF/jsp/regist.jsp</result>
-			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>
-			<result name="login">/WEB-INF/jsp/login.jsp</result>
+			<result name="loginPage">/WEB-INF/jsp/login.jsp</result>			
 			<result name="loginSuccess" type="redirectAction">index</result>
 			<result name="quit" type="redirectAction">index</result>
 		</action>
@@ -36,8 +37,10 @@
 			<result name="clearCart">/WEB-INF/jsp/cart.jsp</result>
 			<result name="showCart">/WEB-INF/jsp/cart.jsp</result>
 			<result name="removeCart">/WEB-INF/jsp/cart.jsp</result>
-			
-			
+		</action>
+		<!-- 订单 -->
+		<action name="order_*" class="orderAction" method="{1}">
+			<result name="saveSuccess">/WEB-INF/jsp/order.jsp</result>
 		</action>
 	</package>
 </struts>

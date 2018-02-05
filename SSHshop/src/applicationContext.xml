@@ -45,6 +45,7 @@
 			<value>iLoveMasami/shop/entity/CategorySecond.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/Order.hbm.xml</value>
 			<value>iLoveMasami/shop/entity/OrderItem.hbm.xml</value>
+			<value>iLoveMasami/back/entity/AdminUser.hbm.xmlvalue>
 		</list>
 	</property>
 </bean>
