@@ -75,7 +75,16 @@
 <bean id="orderAction" class="iLoveMasami.shop.action.OrderAction" scope="prototype">
 	<property name="orderService" ref="orderService"/>
 </bean>
-
+			<!-- 后台登录用户 -->
+<bean id="adminUserAction" class="iLoveMasami.back.action.AdminUserAction" scope="prototype">
+	<property name="adminUserService" ref="adminUserService"/>
+</bean>
+			<!-- 后台Category -->
+<bean id="adminCategoryAction" class="iLoveMasami.back.action.AdminCategoryAction" scope="prototype">
+	<property name="categoryService" ref="categoryService"/>
+</bean>	
+				
+				
 				<!-- 配置业务层的类 -->
 <bean id="userService" class="iLoveMasami.shop.service.UserService">
 	<property name="userDao" ref="userDao"/>
@@ -89,7 +98,9 @@
 <bean id="orderService" class="iLoveMasami.shop.service.OrderService">
 	<property name="orderDao" ref="orderDao"/>
 </bean>
-
+<bean id="adminUserService" class="iLoveMasami.back.service.AdminUserService">
+	<property name="adminUserDao" ref="adminUserDao"/>
+</bean>
 
 
 				<!-- 配置DAO的类 -->
@@ -105,7 +116,10 @@
 <bean id="orderDao" class="iLoveMasami.shop.dao.OrderDao">
 	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
-				
+			<!-- 后台用户 -->
+<bean id="adminUserDao" class="iLoveMasami.back.dao.AdminUserDao">
+	<property name="sessionFactory" ref="sessionFactory"/>
+</bean>			
 
 				<!-- 配置事务管理器 -->
 <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
