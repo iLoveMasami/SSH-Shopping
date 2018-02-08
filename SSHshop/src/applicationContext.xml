@@ -50,7 +50,8 @@
 	</property>
 </bean>
 
-
+<bean id="privilegeInterceptor" class="iLoveMasami.back.interceptor.PrivilegeInterceptor" scope="prototype">
+</bean>
 				<!-- 配置Action的类 -->
 <bean id="indexAction" class="iLoveMasami.shop.index.action.IndexAction" scope="prototype">
 	<property name="categoryService" ref="categoryService"></property>

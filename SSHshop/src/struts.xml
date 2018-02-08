@@ -5,10 +5,14 @@
 
 <struts>
 	<package name="shop" extends="struts-default" namespace="/">
+	<interceptors>
+		<interceptor name="privilegeInterceptor" class="privilegeInterceptor"/>
+	</interceptors>
 	<!-- 全局 -->
 		<global-results>
 			<result name="msg">/WEB-INF/jsp/msg.jsp</result>
 			<result name="login">/WEB-INF/jsp/login.jsp</result>
+			<result name="loginFail">/admin/index.jsp</result>
 		</global-results>
 		<!-- 首页 -->
 		<action name="index" class="indexAction">
@@ -46,11 +50,13 @@
 		<!-- 后台登录的Action -->
 		<action name="adminUser_*" class="adminUserAction" method="{1}">
 			<result name="loginSuccess">/admin/home.jsp</result>
-			<result name="loginFail">/admin/index.jsp</result>
 		</action>
+		<!-- 后台一级分类 -->
 		<action name="adminCategory_*" class="adminCategoryAction" method="{1}">
 			<result name="findAll">/admin/category/list.jsp</result>
 			<result name="saveSuccess" type="redirectAction">adminCategory_findAll</result>
+			<interceptor-ref name="privilegeInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 		</action>
 	</package>
 </struts>
