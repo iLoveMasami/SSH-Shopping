@@ -53,7 +53,8 @@
 		//3.打开连接   请求方式，请求路径，true(异步)
 		var url = "${pageContext.request.contextPath}/user_findByUsername.action?time="+new Date().getTime()+"&username="+username;
 		xhr.open("GET",url,true);
-		//4.发送
+		//4.发送    XMLHttpRequest.send() 方法接受一个可选的参数，其作为请求主体；
+		//如果请求方法是 GET 或者 HEAD，则应将请求主体设置为 null。
 		xhr.send(null);
 	}
 	/**

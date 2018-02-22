@@ -73,7 +73,7 @@
 	<property name="productService" ref="productService"></property>
 </bean>
 			<!--订单  -->
-<bean id="orderAction" class="iLoveMasami.shop.action.OrderAction" scope="prototype">
+<bean id="orderAction" class="iLoveMasami.shop.order.action.OrderAction" scope="prototype">
 	<property name="orderService" ref="orderService"/>
 </bean>
 			<!-- 后台登录用户 -->
@@ -96,7 +96,7 @@
 <bean id="productService" class="iLoveMasami.shop.service.ProductService">
 	<property name="productDao" ref="productDao"/>
 </bean>
-<bean id="orderService" class="iLoveMasami.shop.service.OrderService">
+<bean id="orderService" class="iLoveMasami.shop.order.serviceImpl.OrderServiceImpl">
 	<property name="orderDao" ref="orderDao"/>
 </bean>
 <bean id="adminUserService" class="iLoveMasami.back.service.AdminUserService">
@@ -114,7 +114,7 @@
 <bean id="productDao" class="iLoveMasami.shop.dao.ProductDao">
 	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
-<bean id="orderDao" class="iLoveMasami.shop.dao.OrderDao">
+<bean id="orderDao" class="iLoveMasami.shop.order.daoImpl.OrderDaoImpl">
 	<property name="sessionFactory" ref="sessionFactory"/>
 </bean>
 			<!-- 后台用户 -->
