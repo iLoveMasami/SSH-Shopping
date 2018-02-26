@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-2-1 19:10:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="iLoveMasami.shop.entity.Order" table="ORDERS">
+        <id name="oid" type="java.lang.Integer">
+            <column name="OID" />
+            <generator class="native" />
+        </id>
+        <property name="total" type="java.lang.Double">
+            <column name="TOTAL" />
+        </property>
+        <property name="ordertime" type="java.util.Date">
+            <column name="ORDERTIME" />
+        </property>
+        <property name="state" type="java.lang.Integer">
+            <column name="STATE" />
+        </property>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="PHONE" />
+        </property>
+        <property name="addr" type="java.lang.String">
+            <column name="ADDR" />
+        </property>
+        <!-- 关联关系：一个用户对应多个订单 -->
+        <many-to-one name="user" class="iLoveMasami.shop.entity.User" lazy="false">
+            <column name="uid" />
+        </many-to-one>
+       	<!-- 与订单项的关系   cascade 保存级联项  -->
+        <set name="orderItems" cascade="save-update" lazy="false">
+            <key column="oid" />
+            <one-to-many class="iLoveMasami.shop.entity.OrderItem" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-29 20:38:50 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="iLoveMasami.shop.entity.CategorySecond" table="CATEGORYSECOND">
+        <id name="csid" type="java.lang.Integer">
+            <column name="CSID" />
+            <generator class="native" />
+        </id>
+        <property name="csname" type="java.lang.String">
+            <column name="CSNAME" />
+        </property>
+        <!-- 1个一级分类对应多个二级分类 -->
+        <many-to-one name="category" class="iLoveMasami.shop.entity.Category" column="cid" lazy="false">
+        </many-to-one>
+        <!-- 二级分类和商品的关联 -->
+        <set name="products">
+        	<key column="csid"/>
+        	<one-to-many class="iLoveMasami.shop.entity.Product"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-26 14:53:13 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="iLoveMasami.shop.entity.Product" table="PRODUCT">
+        <id name="pid" type="java.lang.Integer">
+            <column name="PID" />
+            <generator class="assigned" />
+        </id>
+        <property name="pname" type="java.lang.String">
+            <column name="PNAME" />
+        </property>
+        <property name="market_price" type="java.lang.Double">
+            <column name="MARKET_PRICE" />
+        </property>
+        <property name="shop_price" type="java.lang.Double">
+            <column name="SHOP_PRICE" />
+        </property>
+        <property name="image" type="java.lang.String">
+            <column name="IMAGE" />
+        </property>
+        <property name="pdesc" type="java.lang.String">
+            <column name="PDESC" />
+        </property>
+        <property name="is_hot" type="java.lang.Integer">
+            <column name="IS_HOT" />
+        </property>
+        <property name="pdate" type="java.util.Date">
+            <column name="PDATE" />
+        </property>
+        	<!-- 商品与二级分类的关联，column为关联的外键-->
+        <many-to-one name="categorySecond" class="iLoveMasami.shop.entity.CategorySecond" column="csid" lazy="false">
+        </many-to-one>
+    </class>
+</hibernate-mapping>

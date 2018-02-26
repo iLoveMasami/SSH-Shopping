@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-26 12:53:21 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="iLoveMasami.shop.entity.Category" table="CATEGORY">
+        <id name="cid" type="java.lang.Integer">
+            <column name="CID" />
+            <generator class="native" />
+        </id>
+        <property name="cname" type="java.lang.String">
+            <column name="CNAME" />
+        </property>
+        <!-- 配置二级分类的集合  需要关闭延迟加载-->
+        <set order-by="csid" name="categorySeconds" lazy="false" fetch="join">
+        	<key column="cid"/>
+        	<one-to-many class="iLoveMasami.shop.entity.CategorySecond"/>
+        </set>
+    </class>
+</hibernate-mapping>
