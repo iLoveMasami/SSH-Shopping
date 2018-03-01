@@ -9,6 +9,7 @@ import java.util.Date;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -77,6 +78,8 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 		orderService.save(order);
 		//将订单对象显示到页面上:
 		//通过值栈的方式显示：因为模型驱动使用的是Order
+		//清空购物车
+		cart.clearCart();
 		return "saveSuccess";
 	}
 	/**
@@ -89,7 +92,8 @@ public class OrderAction extends ActionSupport implements ModelDriven<Order>{
 				getAttribute("existUser");
 		//调用service
 		PageBean<Order> pageBean = orderService.findByPageUid(user.getUid(),page);
-		
-		return NONE;
+		//将分页数据显示到页面上：
+		ActionContext.getContext().getValueStack().set("pageBean", pageBean);
+		return "findByUidSuccess";
 	}
 }
