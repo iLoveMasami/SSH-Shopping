@@ -9,4 +9,6 @@ public interface OrderService {
 
 	PageBean<Order> findByPageUid(Integer uid, Integer page);
 
+	Order findByOid(Integer oid);
+
 }

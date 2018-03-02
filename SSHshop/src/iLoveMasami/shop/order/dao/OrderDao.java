@@ -29,5 +29,11 @@ public interface OrderDao {
 	 * @return
 	 */
 	List<Order> findByPageUid(Integer uid, int begin, int limit);
+	/**
+	 * 根据订单id查询订单
+	 * @param oid
+	 * @return
+	 */
+	Order findByOid(Integer oid);
 
 }
