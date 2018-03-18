@@ -38,8 +38,16 @@ public class OrderDaoImpl extends HibernateDaoSupport implements OrderDao {
 	}
 
 	@Override
-	public Order findByOid(Integer oid) {		
-		return this.getHibernateTemplate().get(Order.class, oid);
+	public Order findByOid(Integer oid) {
+		Order order =  this.getHibernateTemplate().get(Order.class, oid);
+		System.out.println(order.getOrdertime());
+		System.out.println(order.getOid());
+		return order;
+	}
+
+	@Override
+	public void update(Order currOrder) {
+		this.getHibernateTemplate().update(currOrder);
 	}
 
 }

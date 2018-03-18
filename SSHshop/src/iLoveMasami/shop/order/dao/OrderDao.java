@@ -23,17 +23,27 @@ public interface OrderDao {
 
 	/**
 	 * 我的订单的查询
+	 * 
 	 * @param uid
 	 * @param begin
 	 * @param limit
 	 * @return
 	 */
 	List<Order> findByPageUid(Integer uid, int begin, int limit);
+
 	/**
 	 * 根据订单id查询订单
+	 * 
 	 * @param oid
 	 * @return
 	 */
 	Order findByOid(Integer oid);
+
+	/**
+	 * 修改订单
+	 * 
+	 * @param currOrder
+	 */
+	void update(Order currOrder);
 
 }

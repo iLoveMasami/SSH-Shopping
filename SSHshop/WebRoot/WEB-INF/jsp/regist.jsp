@@ -133,7 +133,7 @@
 								<td>
 									<input type="text" id="username" name="username" class="text" maxlength="20" onblur="checkUsername()">
 									<span id="isExistUsername"></span>
-									
+									<strong><span><s:actionerror/></span></strong>
 								</td>
 							</tr>
 							<tr>

@@ -68,8 +68,8 @@ public class ProductAction extends ActionSupport implements ModelDriven<Product>
 	//根据分类的id查询商品
 	public String findByCid()
 	{
-//		List<Category> clist = categoryService.findAll();
-		//这里直接读取session中保存的信息
+//		List<Category> clist = categoryService.findAll();----调用一级分类的service
+		//这里直接读取session中保存的信息--->通过一级分类查询到二级分类
 		//根据一级分类查询商品，带分页的查询
 		PageBean<Product> pageBean = productService.findByCid(cid,page);
 		//将pageBean存入值栈中

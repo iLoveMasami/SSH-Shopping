@@ -44,7 +44,7 @@ public class MailUtils {
 			}
 
 		};
-		Session session = Session.getInstance(props, authenticator);
+		Session session = Session.getInstance(props, authenticator);//authenticator：认证
 		// 2.创建一个代表邮件的对象Message
 		Message message = new MimeMessage(session);
 		try {

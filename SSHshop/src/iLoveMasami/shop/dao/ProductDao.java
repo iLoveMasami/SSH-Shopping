@@ -86,6 +86,8 @@ public class ProductDao extends HibernateDaoSupport{
 		String hql = "select p from Product p join p.categorySecond cs join cs.category c where c.cid = ?";
 		//分页的另一种写法：
 		Object[] params = {cid};
+		//从HibernateCallback中得到session,因为Spring和Hibernate结合没有分页查询，
+		//这种方式session是在spring管理的，一般不会出现session丢失之类的问题
 		List<Product> list = this.getHibernateTemplate().execute(new PageHibernateCallback<Product>(hql,params,begin,limit));
 		if(list!=null&&list.size()>0){
 			return list;

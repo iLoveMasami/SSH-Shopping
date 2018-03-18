@@ -71,6 +71,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 	 * @return
 	 */
 	public String regist(){
+		//用户名不能重复
+		if(userService.findByUsername(user.getUsername())!=null)
+		{
+			this.addActionError("用户名已使用！请重新填写用户名！");
+			return "registPage";
+		}
 		//验证码的校验
 		String systemCheckcode = ServletActionContext.getRequest().getSession().getAttribute("checkcode").toString();
 		if(!checkcode.equalsIgnoreCase(systemCheckcode)){

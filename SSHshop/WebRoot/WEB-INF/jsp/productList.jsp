@@ -31,6 +31,7 @@
 							<dt>
 								<a href="${pageContext.request.contextPath}/product_findByCid.action?cid=<s:property value="#c.cid"/>&page=1"><s:property value="#c.cname"/></a>
 							</dt>
+							<!-- 显示二级分类 -->
 								<s:iterator value="#c.categorySeconds" var="cs">
 									<dd>
 										<a href="${pageContext.request.contextPath}/product_findByCsid.action?csid=<s:property value="#cs.csid"/>&page=1"><s:property value="#cs.csname"/></a>
@@ -163,48 +164,6 @@
 		<div class="footerAd">
 					<img src="${pageContext.request.contextPath}/resources/image/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势">
 </div>	</div>
-	<div class="span24">
-		<ul class="bottomNav">
-					<li>
-						<a >关于我们</a>
-						|
-					</li>
-					<li>
-						<a>联系我们</a>
-						|
-					</li>
-					<li>
-						<a >诚聘英才</a>
-						|
-					</li>
-					<li>
-						<a >法律声明</a>
-						|
-					</li>
-					<li>
-						<a>友情链接</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">支付方式</a>
-						|
-					</li>
-					<li>
-						<a  target="_blank">配送方式</a>
-						|
-					</li>
-					<li>
-						<a >官网</a>
-						|
-					</li>
-					<li>
-						<a >论坛</a>
-						
-					</li>
-		</ul>
-	</div>
-	<div class="span24">
-		<div class="copyright">Copyright©2005-2018 网上商城 版权所有</div>
-	</div>
+	<%@ include file="common/foot.jsp" %>
 </div>
 </body></html>

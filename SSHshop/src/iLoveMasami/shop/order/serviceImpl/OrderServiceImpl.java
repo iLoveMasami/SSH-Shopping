@@ -55,4 +55,9 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.findByOid(oid);
 	}
 
+	@Override
+	public void update(Order currOrder) {
+		orderDao.update(currOrder);
+	}
+
 }

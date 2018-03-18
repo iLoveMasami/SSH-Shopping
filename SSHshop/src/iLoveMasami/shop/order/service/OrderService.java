@@ -11,4 +11,11 @@ public interface OrderService {
 
 	Order findByOid(Integer oid);
 
+	/**
+	 * 修改订单
+	 * 
+	 * @param currOrder
+	 */
+	void update(Order currOrder);
+
 }

@@ -4,6 +4,9 @@
 <!-- Generated 2018-1-26 14:53:13 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
     <class name="iLoveMasami.shop.entity.Product" table="PRODUCT">
+    <!-- name属性：实体类id属性名称 
+   		column属性：生成的表字段名称 
+    -->
         <id name="pid" type="java.lang.Integer">
             <column name="PID" />
             <generator class="assigned" />
