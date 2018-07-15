@@ -33,23 +33,19 @@ public class UserService {
 
 	// 完成用户注册功能
 	public void save(User user) {
-		try {
-			// 完善user对象
-			// 0代表用户未激活，1代表用户已激活
-			user.setState(0);
-			// 设置激活码
-			String code = UUIDUtils.getUUID() + UUIDUtils.getUUID();// 32位+32位
-			user.setCode(code);
-			// 密码MD5加密
-			String oldPassword = user.getPassword();
-			String newPassword = MD5Util.EncoderByMd5(oldPassword);
-			user.setPassword(newPassword);
-			userDao.save(user);
-			// 发送激活邮件
-			MailUtils.sendMail(user.getEmail(), code);
-		} catch (Exception e) {
-			log.error("exception", e);
-		}
+		// 完善user对象
+		// 0代表用户未激活，1代表用户已激活
+		user.setState(0);
+		// 设置激活码
+		String code = UUIDUtils.getUUID() + UUIDUtils.getUUID();// 32位+32位
+		user.setCode(code);
+		// 密码MD5加密
+		String oldPassword = user.getPassword();
+		String newPassword = MD5Util.MD5Encoder(oldPassword);
+		user.setPassword(newPassword);
+		userDao.save(user);
+		// 发送激活邮件
+		MailUtils.sendMail(user.getEmail(), code);
 	}
 
 	// 根据激活码查询用户
@@ -65,11 +61,7 @@ public class UserService {
 
 	// 用户登录
 	public User login(User user) {
-		try {
-			user.setPassword(MD5Util.EncoderByMd5(user.getPassword()));
-		} catch (Exception e) {
-			log.error("exception", e);
-		}
+		user.setPassword(MD5Util.MD5Encoder(user.getPassword()));
 		return userDao.login(user);
 	}
 
