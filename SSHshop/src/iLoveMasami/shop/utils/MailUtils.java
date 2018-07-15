@@ -32,9 +32,9 @@ public class MailUtils {
 		props.setProperty("mail.transport.protocol", "smtp"); // 使用的协议（JavaMail规范要求）
 		props.setProperty("mail.smtp.host", "smtp.126.com");// 发件人的邮箱的 SMTP服务器地址
 		props.setProperty("mail.smtp.auth", "true"); // 需要请求认证
-		String fromAdd = "yzZhu19940228@126.com"; //发送的邮箱（服务器）
-		//2. 126邮箱的授权码
-		String password = "iLoveMasami1314";
+		
+		String fromAdd = "yzZhu19940228@126.com"; //发送的邮箱（服务器）	
+		String password = "iLoveMasami1314";//126邮箱的授权码
 		Authenticator authenticator = new Authenticator() {
 
 			@Override

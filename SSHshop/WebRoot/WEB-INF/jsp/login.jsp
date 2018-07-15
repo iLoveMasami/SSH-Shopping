@@ -11,6 +11,18 @@
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="${pageContext.request.contextPath}/resources/css/login.css" rel="stylesheet" type="text/css"/>
 
+<%
+	String username = "";
+	String password = "";
+	Cookie[] cookies = request.getCookies();
+	for(int i=0;i<cookies.length;++i){
+		if("username".equals(cookies[i].getName()))
+			username = cookies[i].getValue();
+		if("password".equals(cookies[i].getName()))
+			password = cookies[i].getValue();
+	}
+	
+%>
 
 </head>
 <body>
